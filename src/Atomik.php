@@ -2001,7 +2001,7 @@ final class Atomik implements ArrayAccess
                     unset($params[$matches[2][$i]]);
                 } elseif (array_key_exists($matches[2][$i], $default)) {
                     // default value is found, remove he related part from url
-                    $action = str_replace(':'.$matches[2][$i], '', $action);
+                    $action = preg_replace('/:'.$matches[2][$i].'\/?/i', '', $action);
                 }
             }
         }
