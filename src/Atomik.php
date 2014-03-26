@@ -1999,6 +1999,9 @@ final class Atomik implements ArrayAccess
                 if (array_key_exists($matches[2][$i], $params)) {
                     $action = str_replace($matches[1][$i], $params[$matches[2][$i]], $action);
                     unset($params[$matches[2][$i]]);
+                } elseif (array_key_exists($matches[2][$i], $default)) {
+                    // default value is found, remove he related part from url
+                    $action = str_replace(':'.$matches[2][$i], '', $action);
                 }
             }
         }
